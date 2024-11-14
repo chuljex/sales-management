@@ -1,21 +1,24 @@
 using SalesManagement.Models;
-using SalesManagement.Views;
-using System.Collections.Generic;
+using System.Linq;
+using SalesManagement.Data;
 
 namespace SalesManagement.Controllers
 {
     public class ProductController
     {
-        public void DisplayProducts()
-        {
-            List<Product> products = Product.GetAllProducts();
-            ProductView.DisplayProductList(products);
-        }
+        private SalesContext _context;
 
-        public void AddProduct(string name, decimal price, int stock)
+        public ProductController(SalesContext context) => _context = context;
+
+        public IEnumerable<Product> GetAllProducts() => _context.Products;
+
+        public Product GetProductById(int productId) =>
+            _context.Products.FirstOrDefault(p => p.ProductId == productId);
+
+        public void UpdateStock(int productId, int quantity)
         {
-            Product product = new Product { Name = name, Price = price, Stock = stock };
-            product.Save();
+            var product = GetProductById(productId);
+            if (product != null) product.StockQuantity -= quantity;
         }
     }
 }

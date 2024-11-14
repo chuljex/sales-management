@@ -1,0 +1,15 @@
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.AssemblyInfoInputs.cache
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.AssemblyInfo.cs
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.csproj.CoreCompileInputs.cache
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.sourcelink.json
+D:\Code\SalesManagement\bin\Debug\net8.0\SalesManagement.exe
+D:\Code\SalesManagement\bin\Debug\net8.0\SalesManagement.deps.json
+D:\Code\SalesManagement\bin\Debug\net8.0\SalesManagement.runtimeconfig.json
+D:\Code\SalesManagement\bin\Debug\net8.0\SalesManagement.dll
+D:\Code\SalesManagement\bin\Debug\net8.0\SalesManagement.pdb
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.dll
+D:\Code\SalesManagement\obj\Debug\net8.0\refint\SalesManagement.dll
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.pdb
+D:\Code\SalesManagement\obj\Debug\net8.0\SalesManagement.genruntimeconfig.cache
+D:\Code\SalesManagement\obj\Debug\net8.0\ref\SalesManagement.dll

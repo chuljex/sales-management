@@ -1,33 +1,31 @@
-﻿using SalesManagement.Controllers;
+﻿using System;
+using SalesManagement.Controllers;
+using SalesManagement.Models;
 using SalesManagement.Views;
-using System;
+using SalesManagement.Data;
 
 namespace SalesManagement
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            ProductController productController = new ProductController();
+            var context = new SalesContext();
+            var productController = new ProductController(context);
+            var customerController = new CustomerController(context);
+            var orderController = new OrderController(context);
+            var view = new ConsoleView();
 
-            Console.WriteLine("Hệ thống quản lý bán hàng");
-            Console.WriteLine("1. Xem danh sách sản phẩm");
-            Console.WriteLine("2. Thêm sản phẩm mới");
-            Console.Write("Chọn một tùy chọn: ");
-            int option = Convert.ToInt32(Console.ReadLine());
+            // Hiển thị danh sách sản phẩm
+            view.DisplayProducts(productController.GetAllProducts());
 
-            switch (option)
-            {
-                case 1:
-                    productController.DisplayProducts();
-                    break;
-                case 2:
-                    ProductView.AddProductPrompt(productController);
-                    break;
-                default:
-                    Console.WriteLine("Lựa chọn không hợp lệ.");
-                    break;
-            }
+            // LINQ Queries
+            var availableProducts = context.Products.Where(p => p.StockQuantity > 0);
+            var highValueOrders = context.Orders.Where(o => o.OrderItems.Sum(i => i.Quantity * i.Product.Price) > 500);
+            
+            Console.WriteLine("LINQ Query Results:");
+            Console.WriteLine("Available Products: " + availableProducts.Count());
+            Console.WriteLine("High Value Orders: " + highValueOrders.Count());
         }
     }
 }
