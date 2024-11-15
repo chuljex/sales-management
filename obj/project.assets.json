@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\SalesManagement\\SalesManagement.csproj",
+      "projectUniqueName": "E:\\AABaiTapHCMUTE\\BaiTapOOP\\DeTai\\sales-management\\SalesManagement.csproj",
       "projectName": "SalesManagement",
-      "projectPath": "D:\\Code\\SalesManagement\\SalesManagement.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\SalesManagement\\obj\\",
+      "projectPath": "E:\\AABaiTapHCMUTE\\BaiTapOOP\\DeTai\\sales-management\\SalesManagement.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "E:\\AABaiTapHCMUTE\\BaiTapOOP\\DeTai\\sales-management\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

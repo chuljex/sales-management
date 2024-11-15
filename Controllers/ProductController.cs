@@ -15,10 +15,10 @@ namespace SalesManagement.Controllers
         public Product GetProductById(int productId) =>
             _context.Products.FirstOrDefault(p => p.ProductId == productId);
 
-        public void UpdateStock(int productId, int quantity)
-        {
-            var product = GetProductById(productId);
-            if (product != null) product.StockQuantity -= quantity;
-        }
+        // public void UpdateStock(int productId, int quantity)
+        // {
+        //     var product = GetProductById(productId);
+        //     if (product != null) product.StockQuantity -= quantity;
+        // }
     }
 }

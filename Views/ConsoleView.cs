@@ -10,7 +10,7 @@ namespace SalesManagement.Views
         {
             Console.WriteLine("Product List:");
             foreach (var product in products)
-                Console.WriteLine($"ID: {product.ProductId}, Name: {product.ProductName}, Price: {product.Price}, Stock: {product.StockQuantity}");
+                Console.WriteLine($"ID: {product.ProductId}, Name: {product.ProductName}, Price: {product.Price}");
         }
 
         public void DisplayCustomers(IEnumerable<Customer> customers)
