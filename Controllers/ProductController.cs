@@ -18,7 +18,7 @@ namespace SalesManagement.Controllers
         public void UpdateStock(int productId, int quantity)
         {
             var product = GetProductById(productId);
-            if (product != null) product.StockQuantity -= quantity;
+            if (product != null) product.Stock -= quantity;
         }
     }
 }

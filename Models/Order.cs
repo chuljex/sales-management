@@ -7,10 +7,7 @@ namespace SalesManagement.Models
     {
         public int OrderId { get; set; }
         public int CustomerId { get; set; }  // Khóa ngoại đến Customer
-        public Customer Customer { get; set; }
         public DateTime OrderDate { get; set; }
-        
-        // Danh sách các mục hàng của đơn hàng
-        public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public string Status { get; set; }
     }
 }

@@ -20,12 +20,25 @@ namespace SalesManagement
             view.DisplayProducts(productController.GetAllProducts());
 
             // LINQ Queries
-            var availableProducts = context.Products.Where(p => p.StockQuantity > 0);
-            var highValueOrders = context.Orders.Where(o => o.OrderItems.Sum(i => i.Quantity * i.Product.Price) > 500);
-            
+            // Lấy danh sách tất cả khách hàng
+            var customers = context.Customers.ToList();
+            // Lấy thông tin đơn hàng của khách hàng cụ thể
+            int customerId = 1;
+            var customerOrders = context.Orders.Where(o => o.CustomerId == customerId).ToList();
+
             Console.WriteLine("LINQ Query Results:");
-            Console.WriteLine("Available Products: " + availableProducts.Count());
-            Console.WriteLine("High Value Orders: " + highValueOrders.Count());
+
+            // Lấy danh sách tất cả khách hàng
+            foreach (var customer in customers)
+            {
+                Console.WriteLine($"Customer: {customer.CustomerName}, Email: {customer.Email}");
+            }
+
+            // Lấy thông tin đơn hàng của khách hàng cụ thể
+            foreach (var order in customerOrders)
+            {
+                Console.WriteLine($"Order ID: {order.OrderId}, Date: {order.OrderDate}, Status: {order.Status}");
+            }
         }
     }
 }
