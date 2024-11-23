@@ -16,16 +16,16 @@ namespace SalesManagement.Controllers
         public Order GetOrderById(int orderId) =>
             _context.Orders.FirstOrDefault(o => o.OrderId == orderId);
 
-        public void PlaceOrder(int customerId, List<OrderItem> items)
+        public void PlaceOrder(int customerId, List<OrderDetail> items)
         {
             var order = new Order
             {
                 OrderId = _context.Orders.Count + 1,
                 CustomerId = customerId,
-                OrderDate = DateTime.Now,
-                OrderItems = items
+                OrderDate = DateTime.Now
             };
             _context.Orders.Add(order);
+            _context.OrderDetails.AddRange(items);
         }
     }
 }
