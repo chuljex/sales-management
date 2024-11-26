@@ -4,6 +4,7 @@ using SalesManagement.Controllers;
 using SalesManagement.Models;
 using SalesManagement.Views;
 using SalesManagement.Data;
+using ConsoleTables;
 
 namespace SalesManagement
 {
@@ -11,12 +12,14 @@ namespace SalesManagement
     {
         static void Main(string[] args)
         {
+            Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.UTF8;
+
             var context = new SalesContext();
             var productController = new ProductController(context);
             var customerController = new CustomerController(context);
             var orderController = new OrderController(context);
-            var view = new MainView();
+            var view = new MainView(context);
 
             view.DisplayMenu();
 

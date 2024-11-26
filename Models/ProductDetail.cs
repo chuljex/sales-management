@@ -9,7 +9,7 @@ namespace SalesManagement.Models
     {
         public int ProductId { get; set; }
         public string Color { get; set; }
-        public decimal Weight { get; set; }
+        public double Weight { get; set; }
         public string Type { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SalesManagement.Data;
 using SalesManagement.Models;
 using SalesManagement.utils;
 
@@ -8,9 +9,15 @@ namespace SalesManagement.Views
     public class MainView
     {
         private readonly HandleNumberInput _numberInputHandler = new HandleNumberInput();
-        private readonly ProductView _productView = new ProductView();
-        private readonly OrderView _orderView = new OrderView();
-        private readonly CustomerView _customerView = new CustomerView();
+        private readonly ProductView _productView;
+        private readonly OrderView _orderView;
+        private readonly CustomerView _customerView;
+        public MainView(SalesContext context)
+        {
+            _productView = new ProductView(context);
+            _orderView = new OrderView(context);
+            _customerView = new CustomerView(context);
+        }
         public void DisplayMenu()
         {
             var appRunning = true;
@@ -29,11 +36,9 @@ namespace SalesManagement.Views
                         _productView.DisplayMenu();
                         break;
                     case 2:
-                        Console.WriteLine("Menu 2");
                         _orderView.DisplayMenu();
                         break;
                     case 3:
-                        Console.WriteLine("Menu 3");
                         _customerView.DisplayMenu();
                         break;
                     case 0:
