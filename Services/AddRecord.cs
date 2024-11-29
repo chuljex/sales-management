@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesManagement.utils;
 
-namespace SalesManagement.utils
+namespace SalesManagement.services
 {
     public class AddRecord
     {

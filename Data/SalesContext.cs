@@ -55,7 +55,8 @@ namespace SalesManagement.Data
                 new Order { OrderId = 1, CustomerId = 1, OrderDate = DateTime.Now.AddDays(-10), Status = "Shipped" },
                 new Order { OrderId = 2, CustomerId = 2, OrderDate = DateTime.Now.AddDays(-5), Status = "Processing" },
                 new Order { OrderId = 3, CustomerId = 3, OrderDate = DateTime.Now.AddDays(-2), Status = "Delivered" },
-                new Order { OrderId = 4, CustomerId = 4, OrderDate = DateTime.Now.AddDays(-1), Status = "Pending" }
+                new Order { OrderId = 4, CustomerId = 4, OrderDate = DateTime.Now.AddDays(-1), Status = "Pending" },
+                new Order { OrderId = 5, CustomerId = 2, OrderDate = DateTime.Now.AddDays(0), Status = "Pending" }
             });
 
             // Seed data for OrderDetails
@@ -65,9 +66,12 @@ namespace SalesManagement.Data
                 new OrderDetail { OrderId = 1, ProductId = 2, Quantity = 1, Price = 200 },
                 new OrderDetail { OrderId = 2, ProductId = 3, Quantity = 3, Price = 300 },
                 new OrderDetail { OrderId = 3, ProductId = 4, Quantity = 2, Price = 400 },
-                new OrderDetail { OrderId = 3, ProductId = 5, Quantity = 1, Price = 150 },
+                new OrderDetail { OrderId = 3, ProductId = 2, Quantity = 1, Price = 200 },
                 new OrderDetail { OrderId = 4, ProductId = 2, Quantity = 4, Price = 200 },
-                new OrderDetail { OrderId = 4, ProductId = 1, Quantity = 3, Price = 100 }
+                new OrderDetail { OrderId = 4, ProductId = 1, Quantity = 3, Price = 100 },
+                new OrderDetail { OrderId = 5, ProductId = 2, Quantity = 1, Price = 200 },
+                new OrderDetail { OrderId = 5, ProductId = 1, Quantity = 2, Price = 100 },
+                new OrderDetail { OrderId = 5, ProductId = 3, Quantity = 2, Price = 300 }
             });
         }
     }
