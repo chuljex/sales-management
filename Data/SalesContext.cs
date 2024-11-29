@@ -24,20 +24,20 @@ namespace SalesManagement.Data
             Products.AddRange(new List<Product>
             {
                 new Product { ProductId = 1, ProductName = "Product A", Price = 100, Stock = 50 },
-                new Product { ProductId = 2, ProductName = "Product B", Price = 200, Stock = 30 },
+                new Product { ProductId = 2, ProductName = "Product B", Price = 200, Stock = 7 },
                 new Product { ProductId = 3, ProductName = "Product C", Price = 300, Stock = 20 },
                 new Product { ProductId = 4, ProductName = "Product D", Price = 400, Stock = 15 },
-                new Product { ProductId = 5, ProductName = "Product E", Price = 150, Stock = 60 }
+                new Product { ProductId = 5, ProductName = "Product E", Price = 150, Stock = 5 }
             });
 
             // Seed data for ProductDetails
             ProductDetails.AddRange(new List<ProductDetail>
             {
-                new ProductDetail { ProductId = 1, Color = "Red", Weight = 1.5m, Type = "Type A" },
-                new ProductDetail { ProductId = 2, Color = "Blue", Weight = 2.0m, Type = "Type B" },
-                new ProductDetail { ProductId = 3, Color = "Green", Weight = 2.5m, Type = "Type C" },
-                new ProductDetail { ProductId = 4, Color = "Yellow", Weight = 1.8m, Type = "Type D" },
-                new ProductDetail { ProductId = 5, Color = "Purple", Weight = 1.2m, Type = "Type E" }
+                new ProductDetail { ProductId = 1, Color = "Red", Weight = 1.5, Type = "Type A" },
+                new ProductDetail { ProductId = 2, Color = "Blue", Weight = 2.0, Type = "Type B" },
+                new ProductDetail { ProductId = 3, Color = "Green", Weight = 2.5, Type = "Type C" },
+                new ProductDetail { ProductId = 4, Color = "Yellow", Weight = 1.8, Type = "Type D" },
+                new ProductDetail { ProductId = 5, Color = "Purple", Weight = 1.2, Type = "Type E" }
             });
 
             // Seed data for Customers
