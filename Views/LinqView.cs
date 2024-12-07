@@ -31,9 +31,9 @@ namespace SalesManagement.Views
                 Console.WriteLine("3. Thống kê doanh thu theo từng năm");
                 Console.WriteLine("4. Lấy danh sách khách hàng có đơn hàng đầu tiên trong năm hiện tại");
                 Console.WriteLine("5. Tìm sản phẩm chưa từng được đặt hàng");
-                Console.WriteLine("6. Lọc danh sách khách hàng theo khu vực cụ thể");
+                Console.WriteLine("6. Tìm sản phẩm được đặt hàng nhiều nhất");
                 Console.WriteLine("7. Tìm đơn hàng gần nhất của từng khách hàng");
-                Console.WriteLine("8. Tính tuổi trung bình của khách hàng");
+                Console.WriteLine("8. Thống kê tổng số lượng sản phẩm bán ra theo loại sản phẩm");
                 Console.WriteLine("9. Lấy danh sách đơn hàng theo trạng thái");
                 Console.WriteLine("10. Tìm 3 khách hàng chi tiêu nhiều nhất trong tháng hiện tại");
                 Console.WriteLine("0. Thoát");
@@ -117,15 +117,27 @@ namespace SalesManagement.Views
                             .ToList();
                         _table.Display(productsNeverOrdered, ["Mã", "Tên Sản Phẩm", "Giá", "Tồn Hàng"], "Sản phẩm chưa từng được đặt hàng:");
                         break;
-                    // case 6:
-                    //     Console.Write("Nhập khu vực: ");
-                    //     string region = _handleTextInput.HandleStringInput();
-                    //     var customersByRegion = _context.Customers
-                    //         .Where(c => c.Region == region)
-                    //         .Select(c => c.Name)
-                    //         .ToList();
-                    //     DisplayList(customersByRegion, $"Khách hàng trong khu vực {region}:");
-                    //     break;
+                    case 6:
+                        var mostOrderedProduct = _context.OrderDetails
+                            .GroupBy(od => od.ProductId)
+                            .Select(g => new
+                            {
+                                ProductId = g.Key,
+                                TotalQuantity = g.Sum(od => od.Quantity),
+                                ProductName = _context.Products.FirstOrDefault(p => p.ProductId == g.Key)?.ProductName
+                            })
+                            .OrderByDescending(p => p.TotalQuantity)
+                            .FirstOrDefault();
+
+                        if (mostOrderedProduct != null)
+                        {
+                            Console.WriteLine($"Sản phẩm được đặt hàng nhiều nhất: {mostOrderedProduct.ProductName}, Tổng số lượng: {mostOrderedProduct.TotalQuantity}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Không có sản phẩm nào.");
+                        }
+                        break;
                     case 7:
                         var latestOrders = _context.Orders
                             .GroupBy(o => o.CustomerId)
@@ -133,10 +145,18 @@ namespace SalesManagement.Views
                             .ToList();
                         _table.Display(latestOrders, ["Mã Đơn Hàng", "Mã Khách Hàng", "Ngày", "Trạng Thái"], "Đơn hàng gần nhất của từng khách hàng:");
                         break;
-                    // case 8:
-                    //     var averageAge = _context.Customers.Average(c => DateTime.Now.Year - c.BirthYear);
-                    //     Console.WriteLine($"Tuổi trung bình của khách hàng: {averageAge:N1} năm");
-                    //     break;
+                    case 8:
+                        var salesByCategory = from product in _context.Products
+                                              join order_details in _context.OrderDetails on product.ProductId equals order_details.ProductId
+                                              join product_details in _context.ProductDetails on product.ProductId equals product_details.ProductId
+                                              group new { product, order_details.Quantity } by product_details.Type into productGroup
+                                              select new
+                                              {
+                                                  Type = productGroup.Key,
+                                                  TotalQuantity = productGroup.Sum(g => g.Quantity)
+                                              };
+                        _table.Display(salesByCategory.ToList(), ["Loại sản phẩm", "Tổng số lượng"], "Tổng số lượng sản phẩm bán ra theo loại sản phẩm:");
+                        break;
                     case 9:
                         Console.Write("Nhập trạng thái đơn hàng: ");
                         string status = _handleTextInput.HandleStringInput();

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using SalesManagement.utils;
 using SalesManagement.Data;
 using SalesManagement.Controllers;
+using SalesManagement.Models;
+using SalesManagement.services;
 
 namespace SalesManagement.Views
 {
@@ -12,7 +14,7 @@ namespace SalesManagement.Views
     {
         private readonly HandleNumberInput _numberInputHandler = new HandleNumberInput();
         private readonly OrderController _orderController;
-
+        private readonly AddRecord _addRecord = new AddRecord();
         public OrderView(SalesContext context)
         {
             _orderController = new OrderController(context);
@@ -27,22 +29,22 @@ namespace SalesManagement.Views
                 Console.WriteLine("1. Xem tất cả đơn hàng");
                 Console.WriteLine("2. Tạo đơn hàng");
                 Console.WriteLine("3. Cập nhật đơn hàng");
-                Console.WriteLine("4. Cập nhật trạng thái đơn hàng");
                 Console.WriteLine("0. Thoát");
                 var menuChoice = _numberInputHandler.HandleIntInput();
                 switch (menuChoice)
                 {
                     case 1:
-                        Console.WriteLine("Menu 1");
+                        _orderController.DisplayAllItems();
                         break;
                     case 2:
-                        Console.WriteLine("Menu 2");
+                        List<string> dataField = ["mã"];
+                        List<string> dataType = ["int"];
+                        var data = _addRecord.Add("khách hàng", dataField, dataType);
+                        var newOrder = new Order { CustomerId = int.Parse(data[0]) };
+                        _orderController.Add(newOrder);
                         break;
                     case 3:
                         Console.WriteLine("Menu 3");
-                        break;
-                    case 4:
-                        Console.WriteLine("Menu 4");
                         break;
                     case 0:
                         Console.WriteLine("Thoát");
