@@ -7,13 +7,16 @@ namespace SalesManagement.utils
 {
     public class HandleTextInput
     {
-        public string HandleStringInput()
+        public string HandleStringInput(bool is_accept_blank)
         {
             string input = Console.ReadLine()!;
-            while (input.Length < 1)
+            if (!is_accept_blank)
             {
-                Console.WriteLine("Vui lòng không bỏ trống, nhập lại: ");
-                input = Console.ReadLine()!;
+                while (input.Length < 1)
+                {
+                    Console.Write("Vui lòng không bỏ trống, nhập lại: ");
+                    input = Console.ReadLine()!;
+                }
             }
             return input;
         }

@@ -14,6 +14,8 @@ namespace SalesManagement.Views
     {
         private readonly HandleNumberInput _numberInputHandler = new HandleNumberInput();
         private readonly OrderController _orderController;
+        private readonly CustomerController _customerController;
+        private readonly ProductController _productController;
         private readonly AddRecord _addRecord = new AddRecord();
         public OrderView(SalesContext context)
         {
@@ -24,13 +26,15 @@ namespace SalesManagement.Views
             var appRunning = true;
             while (appRunning)
             {
+                Console.Clear();
                 Console.WriteLine("Menu quản lý đơn hàng");
                 Console.WriteLine("--------------------------");
                 Console.WriteLine("1. Xem tất cả đơn hàng");
                 Console.WriteLine("2. Tạo đơn hàng");
                 Console.WriteLine("3. Cập nhật đơn hàng");
                 Console.WriteLine("0. Thoát");
-                var menuChoice = _numberInputHandler.HandleIntInput();
+                Console.Write("Lựa chọn của bạn: ");
+                var menuChoice = _numberInputHandler.HandleIntInput(false);
                 switch (menuChoice)
                 {
                     case 1:
@@ -47,13 +51,13 @@ namespace SalesManagement.Views
                         Console.WriteLine("Menu 3");
                         break;
                     case 0:
-                        Console.WriteLine("Thoát");
-                        appRunning = false;
-                        break;
+                        return;
                     default:
                         Console.WriteLine("Không có chức năng này!");
                         break;
                 }
+                Console.WriteLine("Nhấn Enter để quay lại menu...");
+                Console.ReadLine();
             }
         }
     }

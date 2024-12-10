@@ -25,6 +25,7 @@ namespace SalesManagement.Views
             var appRunning = true;
             while (appRunning)
             {
+                Console.Clear();
                 Console.WriteLine("Menu quản lý bán hàng");
                 Console.WriteLine("--------------------------");
                 Console.WriteLine("1. Quản lý sản phẩm");
@@ -32,7 +33,8 @@ namespace SalesManagement.Views
                 Console.WriteLine("3. Quản lý khách hàng");
                 Console.WriteLine("4. Thống kê");
                 Console.WriteLine("0. Thoát");
-                var menuChoice = _numberInputHandler.HandleIntInput();
+                Console.Write("Lựa chọn của bạn: ");
+                var menuChoice = _numberInputHandler.HandleIntInput(false);
                 switch (menuChoice)
                 {
                     case 1:
@@ -48,11 +50,13 @@ namespace SalesManagement.Views
                         _linqView.DisplayMenu();
                         break;
                     case 0:
-                        Console.WriteLine("Thoát");
+                        Console.WriteLine("Tạm biệt!");
                         appRunning = false;
                         break;
                     default:
                         Console.WriteLine("Không có chức năng này!");
+                        Console.WriteLine("Nhấn Enter để tiếp tục...");
+                        Console.ReadLine();
                         break;
                 }
             }

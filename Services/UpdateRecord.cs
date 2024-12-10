@@ -6,11 +6,11 @@ using SalesManagement.utils;
 
 namespace SalesManagement.services
 {
-    public class AddRecord
+    public class UpdateRecord
     {
         private readonly HandleNumberInput _numberInputHandler = new HandleNumberInput();
         private readonly HandleTextInput _stringInputHandler = new HandleTextInput();
-        public List<string> Add(string title, List<string> dataField, List<string> dataType)
+        public List<string> Update(string title, List<string> dataField, List<string> dataType)
         {
             List<string> data = [];
             for (int i = 0; i < dataField.Count; i++)
@@ -21,22 +21,22 @@ namespace SalesManagement.services
                 Console.Write($"Nhập {dataField[i]} {title}: ");
                 if (dataType[i] == "int")
                 {
-                    numberInput = _numberInputHandler.HandleIntInput(false);
+                    numberInput = _numberInputHandler.HandleIntInput(true);
                     data.Add(numberInput.ToString());
                 }
                 if (dataType[i] == "double")
                 {
-                    numberInput = _numberInputHandler.HandleDoubleInput(false);
+                    numberInput = _numberInputHandler.HandleDoubleInput(true);
                     data.Add(numberInput.ToString());
                 }
                 if (dataType[i] == "decimal")
                 {
-                    decimalInput = _numberInputHandler.HandleDecimalInput(false);
+                    decimalInput = _numberInputHandler.HandleDecimalInput(true);
                     data.Add(decimalInput.ToString());
                 }
                 if (dataType[i] == "string")
                 {
-                    stringInput = _stringInputHandler.HandleStringInput(false);
+                    stringInput = _stringInputHandler.HandleStringInput(true);
                     data.Add(stringInput.ToString());
                 }
             }

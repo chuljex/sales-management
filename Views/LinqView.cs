@@ -159,7 +159,7 @@ namespace SalesManagement.Views
                         break;
                     case 9:
                         Console.Write("Nhập trạng thái đơn hàng: ");
-                        string status = _handleTextInput.HandleStringInput();
+                        string status = _handleTextInput.HandleStringInput(false);
                         var ordersByStatus = _context.Orders
                             .Where(o => o.Status == status)
                             .ToList();
@@ -188,6 +188,21 @@ namespace SalesManagement.Views
                                                      }).OrderByDescending(o => o.TotalValue).Take(3);
                         _table.Display(topCustomersThisMonth.ToList(), ["Mã khách hàng", "Tên khách hàng", "Email", "SĐT", "Tổng chi tiêu"], "Top 3 khách hàng chi tiêu nhiều nhất tháng này:");
                         break;
+                    // case 11:
+                    //     var allProduct = from p in _context.Products
+                    //                      join pd in _context.ProductDetails on p.ProductId equals pd.ProductId
+                    //                      select new
+                    //                      {
+                    //                          p.ProductId,
+                    //                          p.ProductName,
+                    //                          p.Price,
+                    //                          p.Stock,
+                    //                          pd.Color,
+                    //                          pd.Weight,
+                    //                          pd.Type
+                    //                      };
+                    //     _table.Display(allProduct.ToList(), ["Mã", "Tên Sản Phẩm", "Giá", "Tồn Hàng", "Màu", "Cân Nặng (KG)", "Loại Đàn"], "Tất cả sản phẩm:");
+                    //     break;
                     case 0:
                         return;
                     default:

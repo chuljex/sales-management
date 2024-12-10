@@ -21,7 +21,7 @@ namespace SalesManagement.Controllers
         {
             var table = new ConsoleTable(new ConsoleTableOptions
             {
-                Columns = ["Mã", "Tên Sản Phẩm", "Giá", "Tồn Hàng", "Màu", "Cân Nặng", "Loại Đàn"],
+                Columns = ["Mã", "Tên Sản Phẩm", "Giá", "Tồn Hàng", "Màu", "Cân Nặng (KG)", "Loại Đàn"],
                 EnableCount = false
             });
 
@@ -41,6 +41,7 @@ namespace SalesManagement.Controllers
             productDetail.ProductId = id;
             _context.Products.Add(product);
             _context.ProductDetails.Add(productDetail);
+            Console.WriteLine("Thêm sản phẩm thành công!");
         }
 
         public Product GetProductById(int productId) =>
